@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './Navbar'
 
 const ViewAll = () => {
+    const [data,changedData] = useState([
+
+        {
+            "booktitle":"Half girlfriend",
+            "category":"Novel",
+            "pubyear":"09-09-20234",
+            "authorname":"Chetan bagat",
+            "disname":"Rizna",
+            "pubname":"Royal books",
+            "price":"1200",
+            "edition":"2"
+            
+        }
+    ]
+        
+    )
     return (
         <div>
             <Navbar/>
@@ -17,54 +33,34 @@ const ViewAll = () => {
                                         <tr>
                                             <th scope="col">SL NO</th>
                                             <th scope="col">BOOK TITLE</th>
-                                            <th scope="col">AUTHOR</th>
-                                            <th scope="col">PUBLISHED YEAR</th>
+                                            <th scope="col">CATEGORY</th>
+                                            <th scope="col">PUBLISHED DATE</th>
+                                            <th scope="col">AUTHOR NAME</th>
+                                            <th scope="col">DISTRIBUTER NAME</th>
+                                            <th scope="col">PUBLISHER NAME</th>
                                             <th scope="col">PRICE</th>
+                                            <th scope="col">EDITION</th>
+
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>One Indian girl</td>
-                                            <td>Chetan Bagat</td>
-                                            <td>2003</td>
-                                            <td>1,500</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Wings Of Fire</td>
-                                            <td>APJ Abdul Kalam</td>
-                                            <td>2009</td>
-                                            <td>2,000</td>
-                                        </tr>
-                                        <tr>
-                                        <th scope="row">3</th>
-                                            <td>Mocking Bird</td>
-                                            <td>Harper Lee</td>
-                                            <td>2010</td>
-                                            <td>1,000</td>
-                                        </tr>
-                                        <tr>
-                                        <th scope="row">4</th>
-                                            <td>Frostfire</td>
-                                            <td>Kevin Singh</td>
-                                            <td>2012</td>
-                                            <td>1,000</td>
-                                        </tr>
-                                        <tr>
-                                        <th scope="row">5</th>
-                                            <td>Sunset</td>
-                                            <td>Subhash Singh</td>
-                                            <td>2014</td>
-                                            <td>2,500</td>
-                                        </tr>
-                                        <tr>
-                                        <th scope="row">6</th>
-                                            <td>Day Light</td>
-                                            <td>Rizna</td>
-                                            <td>2024</td>
-                                            <td>4,000</td>
-                                        </tr>
+                                        {data.map(
+                                            (value, index)=>{
+                                                return <tr>
+                                                <th scope="row">{index+1}</th>
+                                                <td>{value.booktitle}</td>
+                                                <td>{value.category}</td>
+                                                <td>{value.pubyear}</td>
+                                                <td>{value.authorname}</td>
+                                                <td>{value.disname}</td>
+                                                <td>{value.pubname}</td>
+                                                <td>{value.price}</td>
+                                                <td>{value.edition}</td>
+                                            </tr>
+                                            }
+                                        )}
+                                        
                                     </tbody>
                                 </table>
 
