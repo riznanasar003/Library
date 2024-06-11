@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Navbar from './Navbar'
+import axios from 'axios'
 
 const AddBook = () => {
     const [data, setData] = useState(
@@ -25,6 +26,17 @@ const AddBook = () => {
 
     const readValue = () =>{
         console.log(data)
+        axios.post("http://localhost:8084/add",data).then(
+            (response)=>{
+                console.log(data)
+                if (response.data.status=="success") {
+                    alert("Successfully Added")
+                    
+                } else {
+                    alert("Error")
+                }
+            }
+        ).catch().finally()
     }
 
   return (
@@ -43,7 +55,7 @@ const AddBook = () => {
                         </div>
                         <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
 
-                            <label htmlFor="" className="form-control">Category</label>
+                            <label htmlFor="" className="form-label">Category</label>
                             <select name="category" value={data.category} onChange={inputHandler} id="" className="form-control">
                                 <option value="Novel">Novel</option>
                                 <option value="Fiction">Fiction</option>
